@@ -26,9 +26,7 @@ class FulltimeEmployee extends Employee {
     if (workingHour <= 24) {
       this.workingHour.push(workingHour);
       if (this.workingHour >= 6) {
-        let salary =
-          (workingHour - (workingHour - 6)) * 100000 +
-          (workingHour - 6) * 75000;
+        let salary = 6 * 100000 + (workingHour - 6) * 75000;
         this.salary.push(salary);
       } else {
         this.salary.push(workingHour * 100000);
@@ -69,8 +67,7 @@ class ParttimeEmployee extends Employee {
     if (workingHour <= 24) {
       this.workingHour.push(workingHour);
       if (this.workingHour >= 6) {
-        let salary =
-          (workingHour - (workingHour - 6)) * 50000 + (workingHour - 6) * 30000;
+        let salary = 6 * 50000 + (workingHour - 6) * 30000;
         this.salary.push(salary);
       } else {
         this.salary.push(workingHour * 50000);
