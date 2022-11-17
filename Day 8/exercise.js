@@ -162,10 +162,22 @@ class ShootingGame {
 
       //player1 useItem
       this.player1.useItem(itemForPlayer1);
-      console.log(`Player ${this.player1} menggunakan item ${itemForPlayer1}`);
+      console.log(
+        `Round ${round} Player ${this.player1.name} Menggunakan item Penambah ${
+          itemForPlayer1.health === undefined
+            ? `Power ${itemForPlayer1.power}`
+            : `Health ${itemForPlayer1.health}`
+        }`
+      );
       //player2 useItem
       this.player2.useItem(itemForPlayer2);
-      console.log(`Player ${this.player2} menggunakan item ${itemForPlayer2}`);
+      console.log(
+        `Round ${round} Player ${this.player2.name} Menggunakan item Penambah ${
+          itemForPlayer2.health === undefined
+            ? `Power ${itemForPlayer2.power}`
+            : `Health ${itemForPlayer2.health}`
+        }`
+      );
       //show status before shooting
       console.log(
         `Round ${round} ${this.player1.showStatus()} ${this.player2.showStatus()}`
