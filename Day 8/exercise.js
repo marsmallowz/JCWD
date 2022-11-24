@@ -23,7 +23,7 @@ class FulltimeEmployee extends Employee {
   }
 
   addWorkingHour(workingHour) {
-    if (workingHour <= 24) {
+    if (workingHour <= 24 && workingHour > 0) {
       this.workingHour.push(workingHour);
       if (this.workingHour >= 6) {
         let salary = 6 * 100000 + (workingHour - 6) * 75000;
@@ -32,7 +32,7 @@ class FulltimeEmployee extends Employee {
         this.salary.push(workingHour * 100000);
       }
     } else {
-      throw Error("Waktu melebihi");
+      throw Error("Waktu tidak sesuai");
     }
   }
 
@@ -64,7 +64,7 @@ class ParttimeEmployee extends Employee {
     console.log(this.workingHour);
   }
   addWorkingHour(workingHour) {
-    if (workingHour <= 24) {
+    if (workingHour <= 24 && workingHour > 0) {
       this.workingHour.push(workingHour);
       if (this.workingHour >= 6) {
         let salary = 6 * 50000 + (workingHour - 6) * 30000;
@@ -73,7 +73,7 @@ class ParttimeEmployee extends Employee {
         this.salary.push(workingHour * 50000);
       }
     } else {
-      throw Error("Waktu melebihi");
+      throw Error("Waktu tidak sesuai");
     }
   }
 }
@@ -102,6 +102,9 @@ class Player {
   }
   hit(power) {
     this.health -= power;
+    if (this.health < 0) {
+      this.health = 0;
+    }
   }
   useItem(item) {
     if (Object.hasOwn(item, "health")) {
@@ -123,7 +126,7 @@ class ShootingGame {
   }
   getRandomItem() {
     let random = Math.floor(Math.random() * 4);
-    console.log(random);
+    // console.log(random);
     if (random === 0) {
       return { health: 0 };
     } else if (random === 1) {
@@ -145,12 +148,13 @@ class ShootingGame {
       let itemForPlayer1 = this.getRandomItem();
       //randomItemForPlayer2
       let itemForPlayer2 = this.getRandomItem();
+      console.log(`Round ${round} `);
       console.log(
-        `Round ${round} Player ${this.player1.name} mendapatkan item Penambah ${
+        `Player ${this.player1.name} mendapatkan item Penambah ${
           itemForPlayer1.health === undefined
             ? `Power ${itemForPlayer1.power}`
             : `Health ${itemForPlayer1.health}`
-        } Player ${this.player2.name} mendapatkan item Penambah ${
+        }\nPlayer ${this.player2.name} mendapatkan item Penambah ${
           itemForPlayer2.health === undefined
             ? `Power ${itemForPlayer2.power}`
             : `Health ${itemForPlayer2.health}`
@@ -160,7 +164,7 @@ class ShootingGame {
       //player1 useItem
       this.player1.useItem(itemForPlayer1);
       console.log(
-        `Round ${round} Player ${this.player1.name} Menggunakan item Penambah ${
+        `Player ${this.player1.name} Menggunakan item Penambah ${
           itemForPlayer1.health === undefined
             ? `Power ${itemForPlayer1.power}`
             : `Health ${itemForPlayer1.health}`
@@ -169,50 +173,105 @@ class ShootingGame {
       //player2 useItem
       this.player2.useItem(itemForPlayer2);
       console.log(
-        `Round ${round} Player ${this.player2.name} Menggunakan item Penambah ${
+        `Player ${this.player2.name} Menggunakan item Penambah ${
           itemForPlayer2.health === undefined
             ? `Power ${itemForPlayer2.power}`
             : `Health ${itemForPlayer2.health}`
         }`
       );
       //show status before shooting
+      // console.log("before");
       console.log(
-        `Round ${round} ${this.player1.showStatus()} ${this.player2.showStatus()}`
+        `${this.player1.showStatus()} \n${this.player2.showStatus()}`
       );
 
       //get turn
       let turn = Math.floor(Math.random() * 2);
-      console.log(turn);
       if (turn == 0) {
         //player 1 hit player 2
         this.player2.hit(this.player1.power);
+        if (this.player2.health <= 0) {
+          // console.log("after");
+          //show status after shooting
+          console.log(
+            `${this.player1.showStatus()} \n${this.player2.showStatus()}`
+          );
+          break;
+        } else {
+          // console.log("after");
+          //show status after shooting
+          console.log(
+            `${this.player1.showStatus()} \n${this.player2.showStatus()}`
+          );
+        }
         //player 2 hit player 1
         this.player1.hit(this.player2.power);
+        if (this.player1.health <= 0) {
+          // console.log("after");
+          //show status after shooting
+          console.log(
+            `${this.player1.showStatus()} \n${this.player2.showStatus()}`
+          );
+          break;
+        } else {
+          // console.log("after");
+          //show status after shooting
+          console.log(
+            `${this.player1.showStatus()} \n${this.player2.showStatus()}`
+          );
+        }
       } else {
         //player 2 hit player 1
         this.player1.hit(this.player2.power);
+        if (this.player1.health <= 0) {
+          // console.log("after");
+          //show status after shooting
+          console.log(
+            `${this.player1.showStatus()} \n${this.player2.showStatus()}`
+          );
+          break;
+        } else {
+          // console.log("after");
+          //show status after shooting
+
+          console.log(
+            `${this.player1.showStatus()} \n${this.player2.showStatus()}`
+          );
+        }
         //player 1 hit player 2
         this.player2.hit(this.player1.power);
+        if (this.player2.health <= 0) {
+          // console.log("after");
+          //show status after shooting
+          console.log(
+            `${this.player1.showStatus()} \n${this.player2.showStatus()}`
+          );
+          break;
+        } else {
+          // console.log("after");
+          //show status after shooting
+          console.log(
+            `${this.player1.showStatus()} \n${this.player2.showStatus()}`
+          );
+        }
       }
-      //show status before shooting
-      console.log(
-        `Round ${round} ${this.player1.showStatus()} ${this.player2.showStatus()}`
-      );
+      // console.log(`Round ${round} END`);
       round++;
     }
     console.log(this.player1);
-    if (this.player1.health < 0) {
-      console.log("player2");
+    console.log(this.player2);
+    if (this.player1.health <= 0) {
+      // console.log("player2");
       winner = this.player2;
     } else {
-      console.log("player1");
+      // console.log("player1");
       winner = this.player1;
     }
     console.log(`The winner is Player ${winner.name}`);
   }
 }
 
-let player1 = new Player("Maz", 100, 30);
-let player2 = new Player("Sanz", 100, 30);
+let player1 = new Player("1", 100, 30);
+let player2 = new Player("2", 100, 30);
 let shootingGame = new ShootingGame(player1, player2);
 shootingGame.start();
