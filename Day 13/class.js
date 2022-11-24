@@ -6,25 +6,34 @@ class Queue {
     this.orders = orders;
   }
 
-  async runProcess() {
+  runProcess() {
     console.log("Print all data in queue. \n");
     let currentQueue = 0;
+    let myOrders = this.orders;
     async function f(queue) {
       let random = Math.floor(Math.random() * 10) + 1;
       let promise = new Promise((resolve, reject) => {
-        console.log(`Queue ${queue + 1} Done in ${random} seconds. \n`);
+        // console.log(
+        //   `Queue order ${myOrders[queue]} ${
+        //     queue + 1
+        //   } Done in ${random} seconds. \n`
+        // );
         setTimeout(
-          () => resolve(),
-          // `Queue ${queue + 1} Done in ${random} seconds. \n`
+          () =>
+            resolve(
+              `Queue order ${myOrders[queue]} ${
+                queue + 1
+              } Done in ${random} seconds. \n`
+            ),
           random * 1000
         );
       });
-      await promise;
-      // let result = await promise;
-      // console.log(result);
+      // await promise;
+      let result = await promise;
+      console.log(result);
     }
     while (currentQueue < this.orders.length) {
-      await f(currentQueue);
+      f(currentQueue);
       currentQueue++;
     }
   }
