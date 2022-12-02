@@ -1,0 +1,137 @@
+// variabel
+5 \* 2
+-1
+5 is operand or argument
+2 is operand or argument
+
+- operator - is binary
+- operator  -1 is unary
+
+* can be used for combine string
+
+//conditional and loop statements
+- break
+  will stop whole loop
+- continue 
+  not stop whole loop.
+
+// array and function
+- for of
+  can be used for looping
+- for in
+  ?
+- function declaration
+  when created function but not assign into variabel.
+- function expression
+  when created function but anonymous / doesnt have name, assign that to a variabel.
+- rest parameter
+  allow function to accept argumen in unlimited quantity
+- nested function and closure
+  inner function has access to variable and parameter of its outer function.
+- currying
+  ?
+- recrusive
+  a function call itself
+- arrow function
+  provide us with an alternative way to write a shorter syntax to create function
+
+// OOP
+- what is object
+  object having state and behavior (properties, method)
+- for in
+  used for looping to get key cannot get value instead.
+- desctructing assignment
+  for unpack values from array or properties from objects [a,b] = [10, 11]
+- spread operator (...)
+  for copy all part of array or object into new array or object
+- this?
+  sometime use this is undifined.
+- what is class 
+  class are a template for creating objects, class are in fact "special functions"
+- class declaration
+  class User {}
+- class expression
+  const User = class {}
+- create an object from class
+  Must use new ex. const user = new User()
+- private properties
+  using "#". private properties cannot be access from outside or from inheriting classes.
+  
+// data structure
+- basic data structure
+  techniques for storing and organaizing data, make easier to modify navigate and acces.
+- used for  
+  - manage and utilize large dataset
+  - search fir particular data from a database.
+  - design algorithms
+  - handle multiple request from users at once.
+  - simplify and speed up data processing
+- primitive data structure
+  boolean, null, number, string, etc
+- non primitive data structure 
+  not define by the programming language , these include linear data structure ~
+  like queue and linked lists.
+- stack
+  last in first out 
+- queue 
+  first in first out  
+- set 
+  doesnt allow duplicate values.
+- assign Set  
+  using new Set(arr)
+- hash table
+  ?
+- map
+  ?
+- linked lists
+  is linear data structure
+
+// algorithm
+- how to use algorithms to solve problems
+  - understand the problems
+    - know its inputs and expected outputs
+    - understand what condition and/or parameter are given
+  - strategize
+  - implement
+- what is pseudocode
+  - easier-to-understand version of programming language
+  - we can express detailed step by step procees in a much simpler language
+- notation
+  - O(1) constant
+  - O(log n) logarithm N  
+  - O(n) linear
+  - O(n2) square 2
+  - O(nN) N square n
+- sort 
+  - Linear search
+    secara berurutan
+  - Binary search
+    data harus diurutkan
+  - Jump search
+  - Interpolation search
+  - Exponential search
+  - Sublist search
+  - Fibonanci search
+
+
+// Advanced Topic
+- callback 
+  using function as a parameter.
+- asynchronous  
+  setTimeout(function, miliSeconds)
+  jadi saat menjalankan asynchronous di sychronus  maka akan jalan secara pararel
+- promise
+  const tryPromise = new Promise((resolve, reject) => {})
+- async await
+  to make code to wait asynchronous not running as paralel.
+  declare async in left function and await in asynchronous
+- try catch
+  is used for handling async await
+- throw
+  is used in try to throw error
+- throw with Error()
+  ?
+- JSON
+  - Convert JSON into object using JSON.parse()
+  - Object into JSON using JSON.stringify()
+

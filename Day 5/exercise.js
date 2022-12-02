@@ -68,19 +68,19 @@ console.log(average2);
 // the array, separated by commas and - the last word - by an 'and'.
 function concateningWords(array) {
   let myString = "";
-  let arrayOfWords = ["Banana", "Watermelon", "Melon", "Cherry", "Durian"];
-  for (let i = 0; i < arrayOfWords.length; i++) {
-    if (i < arrayOfWords.length - 2) {
-      myString += `${arrayOfWords[i]}, `;
-    } else if (i == arrayOfWords.length - 2) {
-      myString += `${arrayOfWords[i]} and `;
+  for (let i = 0; i < array.length; i++) {
+    if (i < array.length - 2) {
+      myString += `${array[i]}, `;
+    } else if (i == array.length - 2) {
+      myString += `${array[i]} and `;
     } else {
-      myString += `${arrayOfWords[i]}. `;
+      myString += `${array[i]}. `;
     }
   }
   return myString;
 }
-let combinationOfWord = concateningWords();
+let array = ["Banana", "Watermelon", "Melon", "Cherry", "Durian"];
+let combinationOfWord = concateningWords(array);
 console.log(combinationOfWord);
 
 // ● Write a function to split a string and convert it into an array of words
@@ -117,7 +117,8 @@ function addElement(array, element) {
   if (find) {
     return array;
   } else {
-    return array.push(element);
+    array.push(element);
+    return array;
   }
 }
 let arrayForAdding = [1, 2, 3];
@@ -160,7 +161,19 @@ function recrusiveLHMA(array, newArray, countX) {
     return recrusiveLHMA(myArray, myNewArray, count);
   } else {
     console.log(myNewArray);
-    return myNewArray;
+    // return myNewArray;
+    let median = Math.floor(myNewArray.length / 2);
+    let average =
+      myNewArray.reduce(
+        (accumulator, currentValue) => accumulator + currentValue
+      ) / myNewArray.length;
+    console.log(median);
+    return [
+      myNewArray[0],
+      myNewArray[myNewArray.length - 1],
+      myNewArray[median],
+      average,
+    ];
   }
   // else {
   //   console.log();
@@ -201,3 +214,34 @@ function findIndex(array, number2, countLoop, countIndex) {
 let arrayRec = [30, 7, 4, 10, 2, 3, 11, 20];
 let recWithoutSort = recrusiveLHMA(arrayRec, [], 0);
 console.log(recWithoutSort);
+
+// function calculator2(a, b, callback) {
+//   callback(a + b);
+// }
+// function displayer(something) {
+//   console.log(something);
+// }
+
+function calculator2(a, b, callback) {
+  callback(a, b);
+}
+function displayer(something) {
+  console.log(something);
+}
+calculator2(5, 5, (a, b) => {
+  console.log(a + b);
+});
+// jika return berupa console log maka tidak akan menampilan log
+let myCalculate = calculator2(5, 5, (a, b) => console.log(a + b));
+console.log(myCalculate);
+module.exports = {
+  lhaWithSort,
+  lhaWithoutSort,
+  concateningWords,
+  splitString,
+  calculateArray,
+  addElement,
+  removeOddNumber,
+  recrusiveLHMA,
+  findIndex,
+};

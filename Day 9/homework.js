@@ -87,6 +87,7 @@ class Billiard {
     let myArry = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
     let currentPlayer = new Player();
     let winner = false;
+
     function getTheBallAllPlayer() {
       const randomPlayer = Math.floor(Math.random() * 2);
       let randomBall = Math.floor(Math.random() * myArry.length);

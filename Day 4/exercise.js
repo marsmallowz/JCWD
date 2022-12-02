@@ -18,6 +18,7 @@ function createTriangle(height) {
 }
 let triangleCreated = createTriangle(4);
 console.log(triangleCreated);
+console.log("01 \n" === "01 \n");
 
 // ● Create a function that can loop the number of times according to the input we provide, and will
 // replace multiples of ú with "Fizz", multiples of ü with "Buzz", multiples of ú and ü with
@@ -87,3 +88,12 @@ function splitString(string) {
 }
 let afterSplit = splitString("Hello World");
 console.log(afterSplit);
+
+// export { createTriangle, loopTheNumber, BMI, removeOddNumber, splitString };
+module.exports = {
+  createTriangle,
+  loopTheNumber,
+  BMI,
+  removeOddNumber,
+  splitString,
+};
